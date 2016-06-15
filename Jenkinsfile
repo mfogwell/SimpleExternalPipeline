@@ -1,2 +1,3 @@
 #!groovy
-build job: 'FreestyleTest', parameters: [[$class: 'TextParameterValue', name: 'Hello_Message', value: 'yes']]
+def Message = 'This worked'
+build job: 'FreestyleTest', parameters: [[$class: 'TextParameterValue', name: 'Hello_Message', value: '${Message}']]
