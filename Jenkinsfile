@@ -1,4 +1,3 @@
-!#xml
 <flow-definition plugin="workflow-job@2.5">
 <actions/>
 <description/>
