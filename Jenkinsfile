@@ -12,4 +12,6 @@ properties([
     [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false]
 ])
 
+node{
 sh 'echo "success"'
+}
