@@ -4,7 +4,7 @@ properties([
         triggers: [
             [
                 $class: 'jenkins.triggers.ReverseBuildTrigger',
-                upstreamProjects: "/Jobs/pipelines/EXP/auto/ttm_cli/master",
+                upstreamProjects: "Upstream1",
                 threshold: hudson.model.Result.SUCCESS
             ]
         ]
