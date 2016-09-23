@@ -4,7 +4,7 @@ properties([
         triggers: [
             [
                 $class: 'jenkins.triggers.ReverseBuildTrigger',
-                upstreamProjects: "Upstream1",
+                upstreamProjects: "Folder/Upstream1",
                 threshold: hudson.model.Result.SUCCESS
             ]
         ]
