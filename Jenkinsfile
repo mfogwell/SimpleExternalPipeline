@@ -1,17 +1,15 @@
 #!groovy
-properties([
-    pipelineTriggers([
-        triggers: [
-            [
-                $class: 'jenkins.triggers.ReverseBuildTrigger',
-                upstreamProjects: "Folder/Upstream1",
-                threshold: hudson.model.Result.SUCCESS
-            ]
-        ]
-    ]),
-    [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false]
-])
+node() {
+   
+   stage('CHECKOUT') { 
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'e7799e4e-2ef5-4b2f-a17c-d8a024ce47c4', url: 'https://github.com/alexanderrtaylor/subversion-plugin']]])
+   } 
+    
+   stage('BUILD') {
+      echo 'in build stage'
+   }
 
-node{
-sh 'echo "success"'
+   stage('REPORTS') {
+      echo 'REPORTS'
+   }
 }
