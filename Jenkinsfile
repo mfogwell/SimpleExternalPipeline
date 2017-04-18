@@ -1,4 +1,7 @@
 #!groovy
+
+properties([gitLabConnection('FAKE'), [$class: 'JobRestrictionProperty'], pipelineTriggers([githubPush(), pollSCM('')])])
+
 node() {
    
    stage('CHECKOUT') { 
