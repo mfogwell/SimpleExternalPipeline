@@ -1,6 +1,6 @@
 #!groovy
 
-properties([gitLabConnection(pipelineTriggers([githubPush(), pollSCM('')])])
+properties([pipelineTriggers([pollSCM('')])])
 
 node() {
    
