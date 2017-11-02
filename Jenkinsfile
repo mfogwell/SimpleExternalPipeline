@@ -19,7 +19,7 @@ def displayProps(){
         {
             def currentProperties = it.getProperties()
             currentProperties.each(){
-                println(it.toString())
+                echo it.toString()
             }
         }
     }
