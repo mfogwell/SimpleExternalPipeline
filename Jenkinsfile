@@ -20,11 +20,8 @@ def displayProps(){
     jobs.each(){
         if (it.getAbsoluteUrl().equals(env.JOB_URL))
         {
-            List<JobProperty> currentProperties = it.getAllProperties()
+            def currentProperties = it.getProperties()
             return currentProperties
-        }
-        else{
-            return null
         }
     }
 }
