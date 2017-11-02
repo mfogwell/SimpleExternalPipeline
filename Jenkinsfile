@@ -13,10 +13,10 @@ node(){
 
 @NonCPS
 def displayProps(){
-    def currentProperties = currentBuild.getProperties()
+    def currentProperties = currentBuild.PropertyUtils().getProperties()
     def i = 0;
     currentProperties.each(){
-        echo "Property i"
+        echo "Property ${i}"
         echo it.toString()
         i++
     }
