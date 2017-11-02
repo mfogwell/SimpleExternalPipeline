@@ -20,7 +20,7 @@ def displayProps(){
     jobs.each(){
         if (it.getAbsoluteUrl().equals(env.JOB_URL))
         {
-            JobProperty currentProperties = it.getProperty(com.cloudbees.hudson.plugins.modeling.impl.jobTemplate.JobPropertyImpl)
+            JobProperty currentProperties = it.getProperties()
             return currentProperties
         }
         else{
