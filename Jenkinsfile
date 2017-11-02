@@ -10,9 +10,9 @@
 node(){
     List<JobProperty> jobProperties = displayProps()
     echo "success 1"
-    jobPropertes.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
+    jobProperties.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
     echo "success 2"
-    properties(jobPropertes)
+    properties(jobProperties)
 }
 
 @NonCPS
