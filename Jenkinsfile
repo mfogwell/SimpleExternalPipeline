@@ -9,7 +9,7 @@
 
 node(){
     def jobProperties = displayProps()
-    jobPropertes.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])))
+    jobPropertes.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
     properties (jobPropertes)
 }
 
