@@ -8,5 +8,7 @@ def currentProperties = currentBuild.getProperties()
 
 
 node(){
-    echo currentProperties
+    currentProperties.each(){
+        echo it.getDisplayName()
+    }
 }
