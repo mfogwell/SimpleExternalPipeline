@@ -8,11 +8,10 @@ import hudson.model.JobProperty;
 
 
 node(){
-    JobProperty jobProperties = displayProps()
-    echo "success 1"
-    jobProperties.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
-    echo "success 2"
-    properties(jobProperties)
+    echo displayProps()
+    //JobProperty jobProperties = displayProps()
+    //jobProperties.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
+    //properties(jobProperties)
 }
 
 @NonCPS
@@ -21,7 +20,7 @@ def displayProps(){
     jobs.each(){
         if (it.getAbsoluteUrl().equals(env.JOB_URL))
         {
-            JobProperty currentProperties = it.getProperties()
+            JobProperty currentProperties = it.getProperty("com.cloudbees.hudson.plugins.modeling.impl.jobTemplate.JobPropertyImpl")
             return currentProperties
         }
     }
