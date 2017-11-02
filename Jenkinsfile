@@ -8,11 +8,11 @@ import hudson.model.JobProperty;
 
 
 node(){
-    def jobProperties = displayProps()
+    JobProperty jobProperties = displayProps()
     echo "success 1"
     jobProperties.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
     echo "success 2"
-    properties((JobProperty)jobProperties)
+    properties(jobProperties)
 }
 
 @NonCPS
@@ -21,7 +21,7 @@ def displayProps(){
     jobs.each(){
         if (it.getAbsoluteUrl().equals(env.JOB_URL))
         {
-            def currentProperties = it.getProperties()
+            JobProperty currentProperties = it.getProperties()
             return currentProperties
         }
     }
