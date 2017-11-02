@@ -16,6 +16,7 @@ def displayProps(){
     def jobs = Jenkins.instance.getAllItems()
     jobs.each(){
         echo env.JOB_URL
+        echo it.getUrl()
         if (it.getUrl().equals(env.JOB_URL))
         {
             def currentProperties = it.getProperties()
