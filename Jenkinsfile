@@ -13,7 +13,7 @@ node(){
 
 @NonCPS
 def displayProps(){
-    def currentProperties = currentBuild.getProperties()
+    def currentProperties = currentBuild.getParent().getProperties()
     currentProperties.each(){
         echo "Property 1"
         echo it.toString()
