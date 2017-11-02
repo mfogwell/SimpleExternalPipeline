@@ -23,5 +23,8 @@ def displayProps(){
             JobProperty currentProperties = it.getProperty("com.cloudbees.hudson.plugins.modeling.impl.jobTemplate.JobPropertyImpl")
             return currentProperties
         }
+        else{
+            return null
+        }
     }
 }
