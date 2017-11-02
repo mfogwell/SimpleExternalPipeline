@@ -13,11 +13,14 @@ node(){
 
 @NonCPS
 def displayProps(){
-    def currentProperties = currentBuild.PropertyUtils().getProperties()
-    def i = 0;
-    currentProperties.each(){
-        echo "Property ${i}"
-        echo it.toString()
-        i++
+    def jobs = Jenkins.instance.getAllItems()
+    jobs.each(){
+        if (it.getURL().equals(JOB_URL))
+        {
+            def currentProperties = it.getProperties()
+            currentProperties.each(){
+                println(it.toString())
+            }
+        }
     }
 }
