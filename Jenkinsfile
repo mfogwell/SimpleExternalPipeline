@@ -8,7 +8,7 @@
 
 
 node(){
-    def jobProperties = displayProps()
+    List<JobProperty> jobProperties = displayProps()
     echo "success 1"
     jobPropertes.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
     echo "success 2"
