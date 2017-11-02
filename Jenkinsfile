@@ -1,4 +1,5 @@
 #!groovy
+import hudson.model.JobProperty;
 
 
 //properties([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
@@ -8,7 +9,7 @@
 
 
 node(){
-    List<JobProperty> jobProperties = displayProps()
+    JobProperty jobProperties = displayProps()
     echo "success 1"
     jobProperties.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
     echo "success 2"
