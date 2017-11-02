@@ -16,6 +16,6 @@ def displayProps(){
     def currentProperties = currentBuild.getProperties()
     currentProperties.each(){
         echo "Property 1"
-        echo it
+        echo it.toString()
     }
 }
