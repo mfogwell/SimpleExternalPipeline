@@ -1,5 +1,5 @@
 #!groovy
-
+import hudson.model.JobProperty;
 
 //properties([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
 //def versionDef = new StringParameterDefinition('Version', '', 'The version in BAMS (e.g. 0.0.24)')
@@ -12,7 +12,7 @@ node(){
     echo "success 1"
     jobProperties.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
     echo "success 2"
-    properties(jobProperties)
+    properties(<JobProperty>jobProperties)
 }
 
 @NonCPS
