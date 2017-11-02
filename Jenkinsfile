@@ -14,6 +14,7 @@ node(){
 @NonCPS
 def displayProps(def properties){
     properties.each(){
+        echo "Property 1"
         echo it.getDisplayName()
     }
 }
