@@ -8,7 +8,9 @@
 
 
 node(){
-    displayProps()
+    def jobProperties = displayProps()
+    jobPropertes.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])]))
+    properties (jobPropertes)
 }
 
 @NonCPS
@@ -20,9 +22,7 @@ def displayProps(){
         if (it.getAbsoluteUrl().equals(env.JOB_URL))
         {
             def currentProperties = it.getProperties()
-            currentProperties.each(){
-                echo it.toString()
-            }
+            return currentProperties
         }
     }
 }
