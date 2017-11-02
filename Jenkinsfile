@@ -8,7 +8,7 @@ import hudson.model.JobProperty;
 
 
 node(){
-    echo displayProps()
+    echo displayProps().toString()
     //JobProperty jobProperties = displayProps()
     //jobProperties.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
     //properties(jobProperties)
