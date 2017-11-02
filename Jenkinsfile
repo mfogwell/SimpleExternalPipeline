@@ -9,7 +9,7 @@ import hudson.model.JobProperty;
 
 
 node(){
-    JobProperty jobProperties = displayProps()
+    JobProperty<List> jobProperties = displayProps()
     echo "success 1"
     jobProperties.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
     echo "success 2"
