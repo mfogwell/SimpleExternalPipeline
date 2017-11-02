@@ -10,15 +10,13 @@
 node(){
     def jobProperties = displayProps()
     jobPropertes.add([parameters([string(defaultValue: '', description: '', name: 'TestString')]), pipelineTriggers([])])
-    properties (jobPropertes)
+    properties(jobPropertes)
 }
 
 @NonCPS
 def displayProps(){
     def jobs = Jenkins.instance.getAllItems()
     jobs.each(){
-        echo env.JOB_URL
-        echo it.getAbsoluteUrl()
         if (it.getAbsoluteUrl().equals(env.JOB_URL))
         {
             def currentProperties = it.getProperties()
