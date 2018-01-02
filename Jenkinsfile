@@ -1,4 +1,20 @@
-node(){
-    sh "find /usr/safe/d6e7451a/workspace/ ! -regex "*slave-setup-pipeline_master*" -type d -exec rm -rf {} +"
+pipeline {
+    agent {
+        any
+    }
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './Fake:Name/script.sh'
+            }
+        }
+    }
 }
-
