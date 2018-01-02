@@ -1,5 +1,1 @@
-#!groovy
-
-node{
-sh 'echo "success2"'
-}
+echo "success2"
