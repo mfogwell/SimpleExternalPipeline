@@ -1,4 +1,4 @@
 # SimpleExternalPipeline
 Creates a simple external pipeline for CS testing
 
-Version 1.9
+Version 1.10
