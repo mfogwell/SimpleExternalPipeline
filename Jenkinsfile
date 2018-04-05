@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+    agent { label 'TestAgent' }
     environment {
         CI = 'true'
     }
