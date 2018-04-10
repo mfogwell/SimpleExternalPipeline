@@ -11,7 +11,7 @@ pipeline {
             }
         }
         stage('Test') {
-            agent {label 'TestAgent'}
+            agent any
             steps {
                 sh "chmod 777 Fake:Name/script.sh"
                 sh './Fake:Name/script.sh'
