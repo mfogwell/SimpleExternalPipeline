@@ -5,7 +5,7 @@ pipeline {
     }
     stages {
         stage('Build') {
-            agent {label 'TestAgent'}
+            agent Any
             steps {
                 echo "Building"
             }
