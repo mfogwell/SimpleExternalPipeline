@@ -1,21 +1,6 @@
-pipeline {
-    agent none
-    environment {
-        CI = 'true'
-    }
-    stages {
-        stage('Build') {
-            agent any
-            steps {
-                echo "Building"
-            }
+node(){
+stage('Checking out code') {
+            def scmVars = checkout scm
+            user = sh(script: "git log -1 --pretty=format:'%an' ${scmVars.GIT_COMMIT}", returnStdout: true).trim()
         }
-        stage('Test') {
-            agent any
-            steps {
-                sh "chmod 777 Fake:Name/script.sh"
-                sh './Fake:Name/script.sh'
-            }
-        }
-    }
 }
