@@ -1,6 +1,6 @@
 node() { 
 
-  ws("/Volumes/WorkSD/CloudBees/cases/workspace") {
+  ws("${env.WORKSPACE}/test") {
 
     stage('CHECKOUT') { 
       checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/alexanderrtaylor/SharedJenkinsLibrary']]])
