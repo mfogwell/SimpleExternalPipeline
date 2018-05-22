@@ -10,6 +10,7 @@ node("lxc-fedora25") {
       input 'hello' 
         sh "touch testfile"
       input 'hello' 
+        sh "ls -la"
     } 
   } 
 
