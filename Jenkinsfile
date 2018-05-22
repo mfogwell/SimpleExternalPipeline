@@ -1,4 +1,4 @@
-node() { 
+node("lxc-fedora25") { 
 
   ws("${env.WORKSPACE}/test") {
 
