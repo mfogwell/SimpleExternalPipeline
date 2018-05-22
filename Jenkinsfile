@@ -1,6 +1,16 @@
-node(){
-stage('Checking out code') {
-            def scmVars = checkout scm
-            user = sh(script: "git log -1 --pretty=format:'%an' ${scmVars.GIT_COMMIT}", returnStdout: true).trim()
-        }
+node() { 
+
+  ws("/Volumes/WorkSD/CloudBees/cases/workspace") {
+
+    stage('CHECKOUT') { 
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/alexanderrtaylor/SharedJenkinsLibrary']]])
+    } 
+
+    stage('IVY CONFIG') { 
+      input 'hello' 
+        sh "touch testfile"
+      input 'hello' 
+    } 
+  } 
+
 }
