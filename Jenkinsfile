@@ -8,9 +8,6 @@ pipeline {
  
         // Don't fill up the build server with unnecessary cruft
         buildDiscarder(logRotator(numToKeepStr: '10'))
- 
-        // Add timestamps and color to console output, cuz pretty
-        timestamps()
     }
  
     environment {
@@ -26,7 +23,9 @@ pipeline {
     stages {
         stage('Prep') {
             // Remove existing 'build' directory and recreate it
-            steps { dir("build") { deleteDir(); sh "mkdir -p build" } }
+            steps {
+                Echo "hello Prep"
+            }
         }
  
         stage('Checkout') {
@@ -35,14 +34,8 @@ pipeline {
  
         // Generate docker image
         stage('Build') {
-            environment {
-                BUILD_DATE = sh(returnStdout: true, script: "date +'%Y-%m-%dT%H:%M:%S'").trim()
-            }
             steps {
-                sh """
-                    docker build --tag '${IMAGE}' --build-arg VCS_REF=${GIT_TAG} --build-arg VERSION='${IMAGE_TAG}' --build-arg BUILD_DATE='${BUILD_DATE}' .
-                    docker save "${IMAGE}" | gzip -c > build/${APP}.tar.gz
-                """
+                Echo "hello Build"
             }
         }
  
@@ -51,14 +44,7 @@ pipeline {
             // For Master branch builds, send the artifacts to the artifact repository and internal docker registry
             when { branch 'master' }
             steps {
-                sh "docker push ${IMAGE}"
-                sh "echo ${IMAGE_TAG} > build/version"
-                sh "docker tag ${IMAGE} ${CRAY_DOCKER_REGISTRY}/${REPOSITORY}/${IMAGE_PREFIX}-${APP}:latest"
-                sh "docker push ${CRAY_DOCKER_REGISTRY}/${REPOSITORY}/${IMAGE_PREFIX}-${APP}:latest"
-                script {
-                    transfer.artifact("build/*.tar.gz")
-                    transfer.artifact("build/version")
-                }
+                Echo "hello Publish"
             }
         }
     }
@@ -66,16 +52,14 @@ pipeline {
     post('Post-build steps') {
         // Clean up the local build registry whether the build was successful or not
         always {
-            sh(returnStdout: true, script: "docker rmi ${IMAGE}")
+            echo "post build"
         }
         success {
             archiveArtifacts artifacts: 'build/*', fingerprint: true
         }
         // notify is a DST-provided function
         failure {
-            script {
-                mail.build_status('fail', "Failed: ${env.JOB_NAME}")
-            }
+            echo "failure!"
         }
     }
 }
