@@ -14,10 +14,10 @@ pipeline {
         REPOSITORY = "cray"
         IMAGE_PREFIX = "cray"
         APP = "ars"
-        VERSION = sh(returnStdout: true, script: "cat .version").trim()
-        GIT_TAG = sh(returnStdout: true, script: "git rev-parse --short HEAD").trim()
-        IMAGE_TAG = "v${VERSION}-${BUILD_NUMBER}-${GIT_TAG}"
-        IMAGE = "${CRAY_DOCKER_REGISTRY}/${REPOSITORY}/${IMAGE_PREFIX}-${APP}:${IMAGE_TAG}"
+        //VERSION = sh(returnStdout: true, script: "cat .version").trim()
+        //GIT_TAG = sh(returnStdout: true, script: "git rev-parse --short HEAD").trim()
+        //IMAGE_TAG = "v${VERSION}-${BUILD_NUMBER}-${GIT_TAG}"
+        //IMAGE = "${CRAY_DOCKER_REGISTRY}/${REPOSITORY}/${IMAGE_PREFIX}-${APP}:${IMAGE_TAG}"
     }
  
     stages {
