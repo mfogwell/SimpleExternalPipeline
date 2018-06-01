@@ -1,21 +1,3 @@
-// Jenkinsfile for CMS Artifact Repository Service
-// Copyright 2018 Cray Inc. All rights reserved.
- 
-////////////////////////////////////////// JENKINS SHARED LIBRARY //////////////////////////////////////////
-
-// Library repo: https://stash.us.cray.com/projects/DST/repos/jenkins-shared-library
-
-// Transfers the build artifact(s) to iyumcf's DST yum repository
-// If the branch is master: /var/www/html/dstrepo/dev
-// If the branch isn't master: /var/www/html/dstrepo/predev
-def transfer = new com.cray.Transfer()
-
-// This sends out an email to a user or users in a git project after the build is over
-// Similar to the 'notify' function it contains the job name and build url
-// It also includes git commit diff, revision changes, and more
-def mail = new com.cray.Mail()
-//////////////////////////////////////// END JENKINS SHARED LIBRARY ////////////////////////////////////////
-
 pipeline {
     agent any
  
