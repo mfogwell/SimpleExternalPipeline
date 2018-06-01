@@ -23,9 +23,9 @@ pipeline {
     stages {
         stage('Prep') {
             // Remove existing 'build' directory and recreate it
-            steps {
-                Echo "hello Prep"
-            }
+         
+                echo "hello Prep"
+            
         }
  
         stage('Checkout') {
@@ -34,18 +34,15 @@ pipeline {
  
         // Generate docker image
         stage('Build') {
-            steps {
-                Echo "hello Build"
-            }
+                echo "hello Build"
+            
         }
  
         // Publish
         stage('Publish: Master') {
             // For Master branch builds, send the artifacts to the artifact repository and internal docker registry
             when { branch 'master' }
-            steps {
-                Echo "hello Publish"
-            }
+                echo "hello Publish"
         }
     }
  
