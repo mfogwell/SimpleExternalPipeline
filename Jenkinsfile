@@ -91,6 +91,7 @@ pipeline {
         }
         // notify is a DST-provided function
         failure {
+         echo "failure"
             //script {
                 //mail.build_status('fail', "Failed: ${env.JOB_NAME}")
             //}
