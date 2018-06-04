@@ -74,10 +74,11 @@ pipeline {
                 sh "echo ${IMAGE_TAG} > build/version"
                 sh "docker tag ${IMAGE} ${CRAY_DOCKER_REGISTRY}/${REPOSITORY}/${IMAGE_PREFIX}-${APP}:latest"
                 sh "docker push ${CRAY_DOCKER_REGISTRY}/${REPOSITORY}/${IMAGE_PREFIX}-${APP}:latest"
-                //script {
-                    //transfer.artifact("build/*.tar.gz")
-                    //transfer.artifact("build/version")
-                //}
+                script {
+                    def browsers = ['chrome', 'firefox']
+                    for (int i = 0; i < browsers.size(); ++i) {
+                        echo "Testing the ${browsers[i]} browser"
+                    }
             }
         }
     }
