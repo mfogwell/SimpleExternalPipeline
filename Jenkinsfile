@@ -73,10 +73,10 @@ pipeline {
                 sh "echo ${IMAGE_TAG} > build/version"
                 sh "docker tag ${IMAGE} ${CRAY_DOCKER_REGISTRY}/${REPOSITORY}/${IMAGE_PREFIX}-${APP}:latest"
                 sh "docker push ${CRAY_DOCKER_REGISTRY}/${REPOSITORY}/${IMAGE_PREFIX}-${APP}:latest"
-                script {
+                //script {
                     //transfer.artifact("build/*.tar.gz")
                     //transfer.artifact("build/version")
-                }
+                //}
             }
         }
     }
@@ -91,9 +91,9 @@ pipeline {
         }
         // notify is a DST-provided function
         failure {
-            script {
+            //script {
                 //mail.build_status('fail', "Failed: ${env.JOB_NAME}")
-            }
+            //}
         }
     }
 }
