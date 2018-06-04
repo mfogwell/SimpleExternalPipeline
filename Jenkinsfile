@@ -28,7 +28,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10'))
  
         // Add timestamps and color to console output, cuz pretty
-        timestamps()
+        //timestamps()
     }
  
     environment {
